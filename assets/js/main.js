@@ -1,6 +1,6 @@
 /**
  * AbilityLink Impact Hub (ALIH) - Institutional Website Logic
- * "Linking Ability to Opportunity" | Kikuube District, Western Uganda
+ * "Linking Ability to Opportunity" | Hoima District, Western Uganda
  */
 
 document.addEventListener('DOMContentLoaded', () => {
