@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileSidebar();
   initMethodologyContinuum();
   initPartnershipIntake();
+  initContactForm();
+  initSupportForm();
   initCopyButtons();
 });
 
@@ -139,7 +141,7 @@ const METHODOLOGY_DATA = [
     description: 'We test selected approaches on a small, tightly measured cohort before committing broader institutional resources. We test hypotheses against real-world friction.',
     actionsHeader: 'Pilot Benchmarks',
     actions: [
-      'Executing controlled pilot cohorts in Kyangwali Subcounty',
+      'Executing controlled pilot cohorts in Hoima District communities',
       'Testing community acceptance, friction points, and real costs',
       'Iterating operational mechanics in real time with beneficiaries',
       'Refining intervention tools before institutional expansion'
@@ -237,6 +239,14 @@ function initMethodologyContinuum() {
 /* --------------------------------------------------------------------------
    04. PARTNERSHIP INTAKE FORM & SUBMISSION SIMULATION
    -------------------------------------------------------------------------- */
+const ALIH_WHATSAPP_NUMBER = '256750188146';
+
+function openWhatsAppMessage(messageText) {
+  const encodedText = encodeURIComponent(messageText);
+  const waUrl = `https://wa.me/${ALIH_WHATSAPP_NUMBER}?text=${encodedText}`;
+  window.open(waUrl, '_blank', 'noopener,noreferrer');
+}
+
 function initPartnershipIntake() {
   const form = document.getElementById('partnership-inquiry-form');
   const trackLabels = document.querySelectorAll('.track-radio-label');
@@ -273,55 +283,157 @@ function initPartnershipIntake() {
       return;
     }
 
-    // Submit state animation
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="spin">
-        <line x1="12" y1="2" x2="12" y2="6"></line>
-        <line x1="12" y1="18" x2="12" y2="22"></line>
-        <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
-        <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
-        <line x1="2" y1="12" x2="6" y2="12"></line>
-        <line x1="18" y1="12" x2="22" y2="12"></line>
-        <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
-        <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
-      </svg>
-      Recording Inquiry...
-    `;
+    const trackVal = selectedTrack ? selectedTrack.value : 'General Partnership';
+    const waText = 
+`*Partnership Inquiry - AbilityLink Impact Hub (ALIH)*
+*From:* ${nameInput.value.trim()}
+*Organisation:* ${orgInput.value.trim() || 'Not specified'}
+*Email:* ${emailInput.value.trim()}
+*Track:* ${trackVal}
 
-    setTimeout(() => {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalText;
-      
-      const trackVal = selectedTrack ? selectedTrack.value : 'General Partnership';
-      showToast(`Inquiry received: Thank you ${nameInput.value.trim()}. Our team will reach out regarding ${trackVal}.`);
+*Message:*
+${messageInput.value.trim()}`;
 
-      // Replace form with confirmation box
-      const card = document.querySelector('.intake-form-card');
-      if (card) {
-        card.innerHTML = `
-          <div style="text-align: center; padding: 2rem 1rem;">
-            <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--color-emerald-100); color: var(--color-emerald-700); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem auto;">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </div>
-            <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--color-navy-950); margin-bottom: 0.5rem;">Partnership Dialogue Initiated</h3>
-            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; max-width: 440px; margin: 0 auto 1.5rem auto;">
-              Thank you, <strong>${nameInput.value.trim()}</strong>. Your expression of interest for <em>"${trackVal}"</em> has been logged in our partnership pipeline. We look forward to connecting with ${orgInput.value.trim() ? orgInput.value.trim() : 'you'}.
-            </p>
-            <div style="background: var(--bg-primary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1rem; max-width: 420px; margin: 0 auto 1.5rem auto; font-size: 0.85rem; color: var(--color-navy-900); text-align: left;">
-              <p><strong>Track:</strong> ${trackVal}</p>
-              <p><strong>Contact Email:</strong> ${emailInput.value.trim()}</p>
-              <p style="margin-top: 0.35rem; font-size: 0.75rem; color: var(--text-muted);">Status: Queued for review by ALIH leadership team.</p>
-            </div>
-            <button type="button" class="btn btn-secondary btn-sm" onclick="location.reload()">Send Another Note</button>
+    showToast('Opening WhatsApp to send your inquiry to ALIH (+256 750 188 146)...');
+    openWhatsAppMessage(waText);
+
+    // Confirmation box with direct button
+    const card = document.querySelector('.intake-form-card');
+    if (card) {
+      card.innerHTML = `
+        <div style="text-align: center; padding: 2rem 1rem;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--color-emerald-100); color: var(--color-emerald-700); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem auto;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
           </div>
-        `;
-      }
-    }, 1000);
+          <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--color-navy-950); margin-bottom: 0.5rem;">Connecting via WhatsApp</h3>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; max-width: 460px; margin: 0 auto 1.5rem auto;">
+            Thank you, <strong>${nameInput.value.trim()}</strong>. Your partnership message has been prepared for WhatsApp (+256 750 188 146). If WhatsApp did not open automatically, click the button below:
+          </p>
+          <a href="https://wa.me/${ALIH_WHATSAPP_NUMBER}?text=${encodeURIComponent(waText)}" target="_blank" rel="noopener" class="btn btn-emerald" style="margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <span>Open WhatsApp Chat</span>
+          </a>
+          <br>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="location.reload()">Send Another Message</button>
+        </div>
+      `;
+    }
+  });
+}
+
+/* --------------------------------------------------------------------------
+   05. CONTACT US FORM (ROUTED TO WHATSAPP +256750188146)
+   -------------------------------------------------------------------------- */
+function initContactForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const nameInput = document.getElementById('contact-name');
+    const emailInput = document.getElementById('contact-email');
+    const phoneInput = document.getElementById('contact-phone');
+    const subjectSelect = document.getElementById('contact-subject');
+    const messageInput = document.getElementById('contact-message');
+
+    if (!nameInput.value.trim() || !emailInput.value.trim() || !messageInput.value.trim()) {
+      showToast('Please fill out your name, email, and message.', 'error');
+      return;
+    }
+
+    const waText = 
+`*Inquiry to AbilityLink Impact Hub (ALIH)*
+*From:* ${nameInput.value.trim()}
+*Email:* ${emailInput.value.trim()}
+*Phone:* ${phoneInput ? (phoneInput.value.trim() || 'Not provided') : 'Not provided'}
+*Subject:* ${subjectSelect ? subjectSelect.value : 'General Inquiry'}
+
+*Message:*
+${messageInput.value.trim()}`;
+
+    showToast('Opening WhatsApp to send your message to ALIH (+256 750 188 146)...');
+    openWhatsAppMessage(waText);
+
+    // Provide immediate feedback in form container
+    const formContainer = form.parentElement;
+    if (formContainer) {
+      formContainer.innerHTML = `
+        <div style="text-align: center; padding: 2rem 1rem;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--color-emerald-100); color: var(--color-emerald-700); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem auto;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--color-navy-950); margin-bottom: 0.5rem;">Message Sent to WhatsApp</h3>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; max-width: 440px; margin: 0 auto 1.5rem auto;">
+            Thank you, <strong>${nameInput.value.trim()}</strong>. Your message is ready in WhatsApp (+256 750 188 146). If the chat did not open automatically, tap below:
+          </p>
+          <a href="https://wa.me/${ALIH_WHATSAPP_NUMBER}?text=${encodeURIComponent(waText)}" target="_blank" rel="noopener" class="btn btn-emerald" style="margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <span>Continue on WhatsApp</span>
+          </a>
+          <br>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="location.reload()">Send Another Note</button>
+        </div>
+      `;
+    }
+  });
+}
+
+/* --------------------------------------------------------------------------
+   06. SUPPORT / DONATE FORM (ROUTED TO WHATSAPP +256750188146)
+   -------------------------------------------------------------------------- */
+function initSupportForm() {
+  const form = document.getElementById('donate-inquiry-form');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const nameInput = document.getElementById('support-name');
+    const emailInput = document.getElementById('support-email');
+    const areaSelect = document.getElementById('support-area');
+    const messageInput = document.getElementById('support-message');
+
+    if (!nameInput.value.trim() || !emailInput.value.trim() || !messageInput.value.trim()) {
+      showToast('Please enter your name, email, and support topic.', 'error');
+      return;
+    }
+
+    const waText = 
+`*Support Discussion - AbilityLink Impact Hub (ALIH)*
+*From:* ${nameInput.value.trim()}
+*Email:* ${emailInput.value.trim()}
+*Area of Interest:* ${areaSelect ? areaSelect.value : 'General Support'}
+
+*Note / Message:*
+${messageInput.value.trim()}`;
+
+    showToast('Opening WhatsApp to discuss supporting ALIH (+256 750 188 146)...');
+    openWhatsAppMessage(waText);
+
+    const formContainer = form.parentElement;
+    if (formContainer) {
+      formContainer.innerHTML = `
+        <div style="text-align: center; padding: 2rem 1rem;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--color-emerald-100); color: var(--color-emerald-700); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem auto;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--color-navy-950); margin-bottom: 0.5rem;">Connecting via WhatsApp</h3>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; max-width: 440px; margin: 0 auto 1.5rem auto;">
+            Thank you, <strong>${nameInput.value.trim()}</strong>. Your support discussion request has been sent to ALIH WhatsApp (+256 750 188 146). If the chat did not open automatically, tap below:
+          </p>
+          <a href="https://wa.me/${ALIH_WHATSAPP_NUMBER}?text=${encodeURIComponent(waText)}" target="_blank" rel="noopener" class="btn btn-emerald" style="margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <span>Open WhatsApp Discussion</span>
+          </a>
+          <br>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="location.reload()">Send Another Note</button>
+        </div>
+      `;
+    }
   });
 }
 
