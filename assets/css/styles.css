@@ -525,14 +525,14 @@ ul, ol {
   position: relative;
   width: 100%;
   background-image: 
-    linear-gradient(180deg, rgba(5, 19, 34, 0.82) 0%, rgba(10, 28, 46, 0.86) 55%, rgba(5, 19, 34, 0.94) 100%),
+    linear-gradient(180deg, rgba(5, 19, 34, 0.42) 0%, rgba(10, 28, 46, 0.38) 40%, rgba(5, 19, 34, 0.62) 100%),
     url('../images/community-engagement-header.jpg');
   background-size: cover;
-  background-position: center 32%;
+  background-position: center 30%;
   background-repeat: no-repeat;
   padding: clamp(3.5rem, 6vw, 5.5rem) 0 clamp(2.75rem, 4.5vw, 4rem);
   border-bottom: 3px solid var(--color-gold-500);
-  box-shadow: 0 10px 30px rgba(5, 19, 34, 0.12);
+  box-shadow: 0 10px 30px rgba(5, 19, 34, 0.15);
 }
 
 .hero-engagement-banner .hero-single-col {
@@ -543,76 +543,87 @@ ul, ol {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  background: radial-gradient(ellipse at center, rgba(5, 19, 34, 0.45) 0%, rgba(5, 19, 34, 0.2) 70%, transparent 100%);
+  padding: clamp(0.75rem, 2vw, 1.5rem);
+  border-radius: var(--radius-lg);
 }
 
 .hero-engagement-banner .hero-org-subtitle {
   font-family: var(--font-serif);
-  font-size: 1.35rem;
-  color: var(--color-gold-400);
-  font-weight: 700;
+  font-size: 1.45rem;
+  color: #FDE047;
+  font-weight: 800;
   letter-spacing: 0.02em;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 1px 3px #000000;
 }
 
 .hero-engagement-banner .hero-title {
   color: #FFFFFF;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 4px 28px rgba(0, 0, 0, 0.9);
 }
 
 .hero-engagement-banner .hero-title span.accent-highlight {
   color: #4ADE80;
-  text-shadow: 0 2px 12px rgba(46, 213, 115, 0.35);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 0 20px rgba(74, 222, 128, 0.6);
 }
 
 .hero-engagement-banner .hero-lead {
-  font-size: clamp(1.15rem, 1.6vw, 1.32rem);
-  font-weight: 600;
+  font-size: clamp(1.18rem, 1.7vw, 1.35rem);
+  font-weight: 700;
   color: #FFFFFF;
   line-height: 1.55;
   max-width: 860px;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 1px 3px #000000;
 }
 
 .hero-engagement-banner .hero-description {
-  font-size: clamp(1.02rem, 1.25vw, 1.15rem);
-  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(1.05rem, 1.3vw, 1.18rem);
+  color: #FFFFFF;
   line-height: 1.7;
   max-width: 860px;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  font-weight: 500;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 1px 3px #000000;
 }
 
 .hero-engagement-banner .hero-description strong {
   color: #FFFFFF;
-  font-weight: 700;
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
 }
 
 .hero-engagement-banner .hero-tagline-motto {
-  color: var(--color-gold-400);
+  color: #FDE047;
+  font-weight: 800;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
 .hero-engagement-banner .hero-tagline-motto::before,
 .hero-engagement-banner .hero-tagline-motto::after {
-  background: var(--color-gold-400);
+  background: #FDE047;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
 }
 
 .hero-engagement-banner .badge-emerald {
-  background: rgba(47, 168, 101, 0.28);
+  background: rgba(10, 28, 46, 0.88);
   color: #86EFAC;
-  border-color: rgba(134, 239, 172, 0.45);
+  border: 1.5px solid #22C55E;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
 }
 
 .hero-engagement-banner .badge-navy {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(10, 28, 46, 0.88);
   color: #FFFFFF;
-  border-color: rgba(255, 255, 255, 0.25);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
 }
 
 .hero-engagement-banner .badge-gold {
-  background: rgba(216, 167, 43, 0.26);
+  background: rgba(10, 28, 46, 0.88);
   color: #FDE68A;
-  border-color: rgba(253, 230, 138, 0.5);
+  border: 1.5px solid #F59E0B;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
 }
 
