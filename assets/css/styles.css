@@ -525,14 +525,14 @@ ul, ol {
   position: relative;
   width: 100%;
   background-image: 
-    linear-gradient(180deg, rgba(5, 19, 34, 0.42) 0%, rgba(10, 28, 46, 0.38) 40%, rgba(5, 19, 34, 0.62) 100%),
+    linear-gradient(180deg, rgba(4, 15, 26, 0.76) 0%, rgba(6, 22, 38, 0.68) 40%, rgba(4, 15, 26, 0.84) 100%),
     url('../images/community-engagement-header.jpg');
   background-size: cover;
-  background-position: center 30%;
+  background-position: center 25%;
   background-repeat: no-repeat;
   padding: clamp(3.5rem, 6vw, 5.5rem) 0 clamp(2.75rem, 4.5vw, 4rem);
   border-bottom: 3px solid var(--color-gold-500);
-  box-shadow: 0 10px 30px rgba(5, 19, 34, 0.15);
+  box-shadow: 0 10px 30px rgba(5, 19, 34, 0.18);
 }
 
 .hero-engagement-banner .hero-single-col {
@@ -543,7 +543,7 @@ ul, ol {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  background: radial-gradient(ellipse at center, rgba(5, 19, 34, 0.45) 0%, rgba(5, 19, 34, 0.2) 70%, transparent 100%);
+  background: radial-gradient(ellipse at center, rgba(5, 19, 34, 0.45) 0%, rgba(5, 19, 34, 0.15) 75%, transparent 100%);
   padding: clamp(0.75rem, 2vw, 1.5rem);
   border-radius: var(--radius-lg);
 }
@@ -625,6 +625,132 @@ ul, ol {
   border: 1.5px solid #F59E0B;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
+}
+
+/* Mobile & Phone Optimization for Hero Engagement Banner */
+@media (max-width: 768px) {
+  .hero-engagement-banner {
+    padding: 2.75rem 0 2rem 0;
+    background-position: center 20%;
+    background-image: 
+      linear-gradient(180deg, rgba(4, 15, 28, 0.80) 0%, rgba(7, 22, 38, 0.72) 40%, rgba(4, 15, 28, 0.86) 100%),
+      url('../images/community-engagement-header.jpg');
+  }
+
+  .hero-engagement-banner .hero-single-col {
+    padding: 0.85rem 0.65rem;
+    gap: 1.15rem;
+  }
+
+  .hero-header-badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .hero-engagement-banner .badge {
+    font-size: 0.72rem;
+    padding: 0.28rem 0.65rem;
+    letter-spacing: 0.03em;
+    border-radius: 9999px;
+  }
+
+  .hero-engagement-banner .hero-org-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .hero-engagement-banner .hero-tagline-motto {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-engagement-banner .hero-tagline-motto::before,
+  .hero-engagement-banner .hero-tagline-motto::after {
+    width: 18px;
+  }
+
+  .hero-engagement-banner .hero-title {
+    font-size: clamp(1.85rem, 6.5vw, 2.35rem);
+    line-height: 1.2;
+  }
+
+  .hero-engagement-banner .hero-lead {
+    font-size: 1.08rem;
+    line-height: 1.5;
+  }
+
+  .hero-engagement-banner .hero-description {
+    font-size: 0.96rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-engagement-banner {
+    padding: 2rem 0 1.75rem 0;
+    background-position: center 16%;
+    background-image: 
+      linear-gradient(180deg, rgba(3, 12, 24, 0.84) 0%, rgba(6, 18, 34, 0.76) 42%, rgba(3, 12, 24, 0.90) 100%),
+      url('../images/community-engagement-header.jpg');
+  }
+
+  .hero-engagement-banner .hero-single-col {
+    padding: 0.5rem 0.25rem;
+    gap: 0.95rem;
+  }
+
+  .hero-header-badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .hero-engagement-banner .badge {
+    font-size: 0.68rem;
+    padding: 0.24rem 0.55rem;
+    line-height: 1.25;
+  }
+
+  .hero-engagement-banner .hero-org-subtitle {
+    font-size: 1.15rem;
+  }
+
+  .hero-engagement-banner .hero-tagline-motto {
+    font-size: 0.8rem;
+  }
+
+  .hero-engagement-banner .hero-title {
+    font-size: 1.65rem;
+    line-height: 1.22;
+  }
+
+  .hero-engagement-banner .hero-lead {
+    font-size: 1.02rem;
+    line-height: 1.45;
+  }
+
+  .hero-engagement-banner .hero-description {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .approach-steps-wrapper {
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .approach-step-card {
+    min-height: 220px;
+    padding: 1.25rem 1rem;
+  }
+
+  .approach-step-title {
+    font-size: 1.2rem;
+  }
+
+  .approach-step-desc {
+    font-size: 0.82rem;
+  }
 }
 
 .hero-background-art {
