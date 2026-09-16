@@ -91,6 +91,7 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 1.25rem);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -525,10 +526,10 @@ ul, ol {
   position: relative;
   width: 100%;
   background-image: 
-    linear-gradient(180deg, rgba(4, 15, 26, 0.76) 0%, rgba(6, 22, 38, 0.68) 40%, rgba(4, 15, 26, 0.84) 100%),
+    linear-gradient(180deg, rgba(5, 19, 34, 0.44) 0%, rgba(5, 19, 34, 0.28) 42%, rgba(5, 19, 34, 0.60) 100%),
     url('../images/community-engagement-header.jpg');
   background-size: cover;
-  background-position: center 25%;
+  background-position: center 30%;
   background-repeat: no-repeat;
   padding: clamp(3.5rem, 6vw, 5.5rem) 0 clamp(2.75rem, 4.5vw, 4rem);
   border-bottom: 3px solid var(--color-gold-500);
@@ -542,8 +543,8 @@ ul, ol {
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  background: radial-gradient(ellipse at center, rgba(5, 19, 34, 0.45) 0%, rgba(5, 19, 34, 0.15) 75%, transparent 100%);
+  gap: 1.25rem;
+  background: transparent;
   padding: clamp(0.75rem, 2vw, 1.5rem);
   border-radius: var(--radius-lg);
 }
@@ -630,16 +631,17 @@ ul, ol {
 /* Mobile & Phone Optimization for Hero Engagement Banner */
 @media (max-width: 768px) {
   .hero-engagement-banner {
-    padding: 2.75rem 0 2rem 0;
-    background-position: center 20%;
+    padding: 3rem 0 2.25rem 0;
+    background-position: center 32%;
     background-image: 
-      linear-gradient(180deg, rgba(4, 15, 28, 0.80) 0%, rgba(7, 22, 38, 0.72) 40%, rgba(4, 15, 28, 0.86) 100%),
+      linear-gradient(180deg, rgba(5, 19, 34, 0.46) 0%, rgba(5, 19, 34, 0.28) 42%, rgba(5, 19, 34, 0.62) 100%),
       url('../images/community-engagement-header.jpg');
   }
 
   .hero-engagement-banner .hero-single-col {
-    padding: 0.85rem 0.65rem;
-    gap: 1.15rem;
+    padding: 0.5rem 0.5rem;
+    gap: 0.85rem;
+    background: transparent;
   }
 
   .hero-header-badge-row {
@@ -656,27 +658,27 @@ ul, ol {
   }
 
   .hero-engagement-banner .hero-org-subtitle {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
   }
 
   .hero-engagement-banner .hero-tagline-motto {
-    font-size: 0.85rem;
-    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
   }
 
   .hero-engagement-banner .hero-tagline-motto::before,
   .hero-engagement-banner .hero-tagline-motto::after {
-    width: 18px;
+    width: 16px;
   }
 
   .hero-engagement-banner .hero-title {
-    font-size: clamp(1.85rem, 6.5vw, 2.35rem);
-    line-height: 1.2;
+    font-size: clamp(1.35rem, 4.5vw, 1.65rem);
+    line-height: 1.25;
   }
 
   .hero-engagement-banner .hero-lead {
-    font-size: 1.08rem;
-    line-height: 1.5;
+    font-size: 0.98rem;
+    line-height: 1.45;
   }
 
   .hero-engagement-banner .hero-description {
@@ -687,16 +689,17 @@ ul, ol {
 
 @media (max-width: 480px) {
   .hero-engagement-banner {
-    padding: 2rem 0 1.75rem 0;
-    background-position: center 16%;
+    padding: 2.35rem 0 1.85rem 0;
+    background-position: center 32%;
     background-image: 
-      linear-gradient(180deg, rgba(3, 12, 24, 0.84) 0%, rgba(6, 18, 34, 0.76) 42%, rgba(3, 12, 24, 0.90) 100%),
+      linear-gradient(180deg, rgba(5, 19, 34, 0.46) 0%, rgba(5, 19, 34, 0.26) 42%, rgba(5, 19, 34, 0.60) 100%),
       url('../images/community-engagement-header.jpg');
   }
 
   .hero-engagement-banner .hero-single-col {
-    padding: 0.5rem 0.25rem;
-    gap: 0.95rem;
+    padding: 0.25rem 0.25rem;
+    gap: 0.75rem;
+    background: transparent;
   }
 
   .hero-header-badge-row {
@@ -712,20 +715,20 @@ ul, ol {
   }
 
   .hero-engagement-banner .hero-org-subtitle {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
   }
 
   .hero-engagement-banner .hero-tagline-motto {
-    font-size: 0.8rem;
+    font-size: 0.72rem;
   }
 
   .hero-engagement-banner .hero-title {
-    font-size: 1.65rem;
-    line-height: 1.22;
+    font-size: 1.28rem;
+    line-height: 1.25;
   }
 
   .hero-engagement-banner .hero-lead {
-    font-size: 1.02rem;
+    font-size: 0.92rem;
     line-height: 1.45;
   }
 
@@ -2810,17 +2813,72 @@ ul, ol {
 }
 
 @media (max-width: 768px) {
+  .top-notice-bar {
+    display: none;
+  }
+
   :root {
-    --header-height: 70px;
+    --header-height: 64px;
+  }
+
+  .site-header {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 1px 4px rgba(10, 28, 46, 0.08);
+  }
+
+  .header-container {
+    height: var(--header-height);
+  }
+
+  .brand-link {
+    gap: 0.65rem;
+    min-width: 0;
+  }
+
+  .brand-emblem-wrap {
+    width: 42px;
+    height: 42px;
+    padding: 2px;
+    flex-shrink: 0;
+  }
+
+  .brand-text-block {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .brand-name {
+    font-size: 0.9375rem;
+    line-height: 1.18;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .brand-acronym {
+    font-size: 0.875rem;
+  }
+
+  .brand-tagline {
+    font-size: 0.625rem;
+    letter-spacing: 0.04em;
+    margin-top: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mobile-toggle-btn {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
   }
 
   .desktop-nav,
   .header-actions .btn {
     display: none;
-  }
-
-  .mobile-toggle-btn {
-    display: flex;
   }
 
   .mobile-bottom-bar {
@@ -2941,14 +2999,52 @@ ul, ol {
     margin-top: 1rem;
   }
 
+  .site-footer {
+    padding-bottom: calc(var(--mobile-bar-height) + env(safe-area-inset-bottom, 0px) + 2.5rem) !important;
+  }
+
   .toast-container {
-    bottom: 5rem;
+    bottom: calc(var(--mobile-bar-height) + env(safe-area-inset-bottom, 0px) + 1rem);
     right: 1rem;
     left: 1rem;
   }
 }
 
 @media (max-width: 480px) {
+  :root {
+    --header-height: 58px;
+  }
+
+  .brand-link {
+    gap: 0.5rem;
+  }
+
+  .brand-emblem-wrap {
+    width: 36px;
+    height: 36px;
+    padding: 1.5px;
+  }
+
+  .brand-name {
+    font-size: 0.84rem;
+    line-height: 1.15;
+  }
+
+  .brand-acronym {
+    font-size: 0.78rem;
+  }
+
+  .brand-tagline {
+    font-size: 0.56rem;
+    letter-spacing: 0.03em;
+    margin-top: 1px;
+  }
+
+  .mobile-toggle-btn {
+    width: 36px;
+    height: 36px;
+  }
+
   .values-grid {
     grid-template-columns: 1fr;
   }
@@ -2962,8 +3058,8 @@ ul, ol {
   }
 
   .hero-tagline-motto {
-    font-size: 0.875rem;
-    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
   }
 
   .hero-tagline-motto::before,
