@@ -2828,16 +2828,23 @@ ul, ol {
 
   .header-container {
     height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
   }
 
   .brand-link {
+    display: flex;
+    align-items: center;
     gap: 0.65rem;
     min-width: 0;
+    flex: 1 1 auto;
   }
 
   .brand-emblem-wrap {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     padding: 2px;
     flex-shrink: 0;
   }
@@ -2870,10 +2877,24 @@ ul, ol {
     text-overflow: ellipsis;
   }
 
+  .header-actions {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
   .mobile-toggle-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
     width: 40px;
     height: 40px;
     flex-shrink: 0;
+    border-radius: var(--radius-sm);
+    background: #FFFFFF;
+    border: 1.5px solid var(--border-medium);
+    color: var(--color-navy-900);
+    box-shadow: 0 1px 3px rgba(10, 28, 46, 0.08);
   }
 
   .desktop-nav,
@@ -3015,14 +3036,19 @@ ul, ol {
     --header-height: 58px;
   }
 
+  .header-container {
+    gap: 0.35rem;
+  }
+
   .brand-link {
-    gap: 0.5rem;
+    gap: 0.45rem;
   }
 
   .brand-emblem-wrap {
     width: 36px;
     height: 36px;
     padding: 1.5px;
+    flex-shrink: 0;
   }
 
   .brand-name {
@@ -3036,13 +3062,15 @@ ul, ol {
 
   .brand-tagline {
     font-size: 0.56rem;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.02em;
     margin-top: 1px;
   }
 
   .mobile-toggle-btn {
+    display: flex !important;
     width: 36px;
     height: 36px;
+    flex-shrink: 0;
   }
 
   .values-grid {
